@@ -15,6 +15,7 @@ function GetStockPage($stockSymbol)
     error_log(curl_error($curl));
     error_log($result);
     curl_close($curl);
+    $result=json_encode($result);
     return $result->{"quoteSummary"}->{"result"}[0]->{"price"}->{"regularMarketPrice"}->{"raw"};
     
     //$price=$resposne->{"quoteSummary"}->{"result"}[0]->{"price"}->{"regularMarketPrice"}->{"raw"};
