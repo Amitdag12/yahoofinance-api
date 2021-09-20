@@ -1,9 +1,8 @@
 <?php
 function GetStockPage($stockSymbol)
 {
-  
-   // $url = "http://query1.finance.yahoo.com/v10/finance/quoteSummary/".$stockSymbol."?modules=price,defaultKeyStatistics";
-    $url = "http://query1.finance.yahoo.com/v10/finance/quoteSummary/AAPL?modules=price,defaultKeyStatistics";
+    $url = "http://query1.finance.yahoo.com/v10/finance/quoteSummary/".$stockSymbol."?modules=price,defaultKeyStatistics";
+    //  $url = "http://query1.finance.yahoo.com/v10/finance/quoteSummary/AAPL?modules=price,defaultKeyStatistics";
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
