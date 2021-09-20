@@ -1,3 +1,6 @@
 <?php
 include 'index.php';
-return GetStockPage($_POST["stockSymbol"]);
+
+$data = GetStockPage($_POST["stockSymbol"]);
+header('Content-Type: application/json; charset=utf-8');
+echo json_encode($data);

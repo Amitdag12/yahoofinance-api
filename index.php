@@ -65,5 +65,5 @@ function GetStockChart($symbol)
     echo($price);
 }
 GetStockPrice("AAPL");
-echo("hi");
+//echo("hi");
 //curl query1.finance.yahoo.com/v10/finance/quoteSummary/AAPL?modules=price [regularMarketDayHigh]
