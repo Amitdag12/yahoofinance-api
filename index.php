@@ -15,7 +15,7 @@ function GetStockPage($stockSymbol)
     error_log(curl_error($curl)."AAAAAAAAAAA");
     curl_close($curl);
     return $result->{"quoteSummary"}->{"result"}[0]->{"price"}->{"regularMarketPrice"}->{"raw"};
-    ;
+    
     //$price=$resposne->{"quoteSummary"}->{"result"}[0]->{"price"}->{"regularMarketPrice"}->{"raw"};
 }
   function GetStockHistoryPage($stockSymbol, $interval, $timePeriod)
@@ -53,7 +53,7 @@ function GetStockPrice($symbol)
     // error_log($resposne);
     $times=$resposne->{"chart"}->{"result"}[0]->{"timestamp"};
     $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}->{"open"};
-    echo($price);
+    // echo($price);
 }
 function GetStockChart($symbol)
 {
