@@ -52,7 +52,7 @@ function GetStockPrice($symbol)
     $resposne=json_decode($resposne);
     // error_log($resposne);
     $times=$resposne->{"chart"}->{"result"}[0]->{"timestamp"};
-    $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}->{"open"};
+    $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}[0]->{"open"};
     // echo($price);
 }
 function GetStockChart($symbol)
