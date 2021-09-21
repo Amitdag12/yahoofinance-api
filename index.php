@@ -19,7 +19,7 @@ function GetStockQuote($stockSymbol)
     
     //$price=$resposne->{"quoteSummary"}->{"result"}[0]->{"price"}->{"regularMarketPrice"}->{"raw"};
 }
-  function GetStockHistoryPage($stockSymbol, $interval, $timePeriod)
+  function GetStockHistoryChart($stockSymbol, $interval, $timePeriod)
   {
       $dayAmount;
       if (strpos($timePeriod, "mo")) {
@@ -52,16 +52,12 @@ function GetStockPrice($symbol)
 {
     //  $resposne = GetStockHistoryPage($symbol, "1d", "1y");
     $resposne = GetStockQuote($symbol);
-    $resposne=json_decode($resposne);
-    // error_log($resposne);
-//    $times=$resposne->{"chart"}->{"result"}[0]->{"timestamp"};
-    //  $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}[0]->{"open"};
     return $resposne->{"quoteSummary"}->{"result"}[0]->{"price"}->{"regularMarketPrice"}->{"raw"};
     // echo($price);
 }
 function GetStockChart($symbol, $timePeriod, $interval)
 {
-    $resposne = GetStockHistoryPage($symbol, $interval, $timePeriod);
+    $resposne = GetStockHistoryChart($symbol, $interval, $timePeriod);
     // error_log($resposne);
     $times=$resposne->{"chart"}->{"result"}[0]->{"timestamp"};
     foreach ($times as &$time) {
@@ -72,6 +68,6 @@ function GetStockChart($symbol, $timePeriod, $interval)
     $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}[0]->{"open"};
     return [$times,$values];
 }
-GetStockPrice("AAPL");
+//GetStockPrice("AAPL");
 //echo("hi");
 //curl query1.finance.yahoo.com/v10/finance/quoteSummary/AAPL?modules=price [regularMarketDayHigh]
