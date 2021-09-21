@@ -60,12 +60,13 @@ function GetStockChart($symbol, $timePeriod, $interval)
     $resposne = GetStockHistoryChart($symbol, $interval, $timePeriod);
     // error_log($resposne);
     $times=$resposne->{"chart"}->{"result"}[0]->{"timestamp"};
+    /*
     foreach ($times as &$time) {
         $date = date_create();
         date_timestamp_set($date, $time);
         $time =date_format($date, "H:i:s");
     }
-        
+        */
     
     $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}[0]->{"open"};
     return ["timeStamps"=>$times,
