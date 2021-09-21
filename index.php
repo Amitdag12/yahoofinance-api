@@ -59,11 +59,16 @@ function GetStockPrice($symbol)
     return $resposne->{"quoteSummary"}->{"result"}[0]->{"price"}->{"regularMarketPrice"}->{"raw"};
     // echo($price);
 }
-function GetStockChart($symbol)
+function GetStockChart($symbol, $timePeriod, $interval)
 {
-    $resposne = GetStockHistoryPage($symbol, "1d", "1y");
+    $resposne = GetStockHistoryPage($symbol, $interval, $timePeriod);
     // error_log($resposne);
     $times=$resposne->{"chart"}->{"result"}[0]->{"timestamp"};
+    foreach ($times as &$time) {
+        $time =date_format(new DateTime($time), "H:i:s");
+    }
+        
+    
     $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}[0]->{"open"};
     return [$times,$values];
 }
