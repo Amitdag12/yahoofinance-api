@@ -68,7 +68,8 @@ function GetStockChart($symbol, $timePeriod, $interval)
         
     
     $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}[0]->{"open"};
-    return [$times,$values];
+    return ["timeStamps"->$times,
+    "prices"->$values];
 }
 //GetStockPrice("AAPL");
 //echo("hi");
