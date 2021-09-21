@@ -61,7 +61,9 @@ function GetStockChart($symbol, $timePeriod, $interval)
     // error_log($resposne);
     $times=$resposne->{"chart"}->{"result"}[0]->{"timestamp"};
     foreach ($times as &$time) {
-        $time =date_format(new DateTime($time), "H:i:s");
+        $date = date_create();
+        date_timestamp_set($date, $time);
+        $time =date_format($date, "H:i:s");
     }
         
     
