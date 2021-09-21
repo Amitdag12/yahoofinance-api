@@ -1,5 +1,5 @@
 <?php
-function GetStockPage($stockSymbol)
+function GetStockQuote($stockSymbol)
 {
     $url = "http://query1.finance.yahoo.com/v10/finance/quoteSummary/".$stockSymbol."?modules=price,defaultKeyStatistics";
     //  $url = "http://query1.finance.yahoo.com/v10/finance/quoteSummary/AAPL?modules=price,defaultKeyStatistics";
@@ -15,7 +15,7 @@ function GetStockPage($stockSymbol)
     error_log($result);
     curl_close($curl);
     $result=json_decode($result);
-    return $result->{"quoteSummary"}->{"result"}[0]->{"price"}->{"regularMarketPrice"}->{"raw"};
+    return $result;
     
     //$price=$resposne->{"quoteSummary"}->{"result"}[0]->{"price"}->{"regularMarketPrice"}->{"raw"};
 }
@@ -45,25 +45,27 @@ function GetStockPage($stockSymbol)
       error_log($result);
       error_log(curl_error($curl));
       curl_close($curl);
+      $result=json_decode($result);
       return $result;
   }
 function GetStockPrice($symbol)
 {
-    $resposne = GetStockHistoryPage($symbol, "1d", "1y");
+    //  $resposne = GetStockHistoryPage($symbol, "1d", "1y");
+    $resposne = GetStockQuote($symbol);
     $resposne=json_decode($resposne);
     // error_log($resposne);
-    $times=$resposne->{"chart"}->{"result"}[0]->{"timestamp"};
-    $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}[0]->{"open"};
+//    $times=$resposne->{"chart"}->{"result"}[0]->{"timestamp"};
+    //  $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}[0]->{"open"};
+    return $resposne->{"quoteSummary"}->{"result"}[0]->{"price"}->{"regularMarketPrice"}->{"raw"};
     // echo($price);
 }
 function GetStockChart($symbol)
 {
     $resposne = GetStockHistoryPage($symbol, "1d", "1y");
-    $resposne=json_decode($resposne);
     // error_log($resposne);
     $times=$resposne->{"chart"}->{"result"}[0]->{"timestamp"};
     $values=$resposne->{"chart"}->{"result"}[0]->{"indicators"}->{"quote"}[0]->{"open"};
-    echo($price);
+    return [$times,$values];
 }
 GetStockPrice("AAPL");
 //echo("hi");
