@@ -13,4 +13,4 @@ for ($i=0; $i < count($stockSymbols); $i++) {
 
 //error_log(var_dump($Inputdata));
 header('Content-Type: application/json; charset=utf-8');
-echo json_encode($returnData);
+echo json_encode(["prices"=>$returnData]);
