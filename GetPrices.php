@@ -5,9 +5,10 @@ $Inputdata = json_decode(file_get_contents('php://input'), true);
 $returnData=[];
 
 $stockSymbols = json_encode($Inputdata["stockSymbols"]);
-foreach ($stockSymbols as &$stockSymbol) {
-    $returnData[]=GetStockPrice($stockSymbol);
+for ($i=0; $i < count($stockSymbols); $i++) {
+    $returnData[]=GetStockPrice($stockSymbol[$i]);
 }
+
 //error_log(var_dump($Inputdata));
 header('Content-Type: application/json; charset=utf-8');
 echo json_encode($returnData);
