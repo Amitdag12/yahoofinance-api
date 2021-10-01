@@ -5,8 +5,8 @@ $Inputdata = json_decode(file_get_contents('php://input'), true);
 $returnData=[];
 
 $stockSymbols =$Inputdata["stockSymbols"];
-error_log($stockSymbols);
-error_log($Inputdata);
+error_log(json_encode($stockSymbols));
+error_log(json_encode($Inputdata));
 for ($i=0; $i < count($stockSymbols); $i++) {
     $returnData[]=GetStockPrice($stockSymbol[$i]);
 }
