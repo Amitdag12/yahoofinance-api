@@ -8,7 +8,7 @@ $stockSymbols =$Inputdata["stockSymbols"];
 error_log(json_encode($stockSymbols));
 error_log(json_encode($Inputdata));
 for ($i=0; $i < count($stockSymbols); $i++) {
-    $returnData[]=GetStockPrice($stockSymbol[$i]);
+    $returnData[]=GetStockPrice($stockSymbols[$i]);
 }
 
 //error_log(var_dump($Inputdata));
