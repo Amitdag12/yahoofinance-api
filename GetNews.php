@@ -13,8 +13,8 @@
  curl_close($curl);
  $result=substr($result, strpos($result, '<ul class="My(0) P(0) Wow(bw) Ov(h)" data-reactid="3">'));
  $result=substr($result, 0, strpos($result, "</ul>"));
-error_log(json_encode(SeperateStringToArray($result, "<li", "</li>")));
-
+$LiArray=SeperateStringToArray($result, "<li", "</li>");
+GetImage($LiArray[0]);
 function SeperateStringToArray($string, $starter, $ender)
 {
     $text="";
@@ -36,4 +36,10 @@ function SeperateStringToArray($string, $starter, $ender)
         }
     }
     return $arr;
+}
+function GetImage($li)
+{
+    $li=substr($li, strpos($li, "<img"));
+    $li=substr($li, strpos($li, 0, strpos($li, ">")));
+    error_log($li);
 }
