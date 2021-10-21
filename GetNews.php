@@ -11,50 +11,28 @@
  //error_log($result);
  error_log(curl_error($curl));
  curl_close($curl);
- $result=substr($result, strpos($result, 'id="slingstoneStream-0-Stream"'));
- $result=substr($result, FindNextCloseTag($result));
- $result=substr($result, strpos($result, "<")+1);
- error_log(FindNextCloseTag($result));
- ConvertHtmlTagToObject(substr($result, 0, FindNextCloseTag($result)), "");
- function FindNextCloseTag($html)
+ $result=substr($result, strpos($result, '<div id="slingstoneStream-0-Stream"'));
+error_log(json_encode($result));
+ function html_to_obj($html)
  {
-     return strpos($html, ">");
+     $dom = new DOMDocument();
+     $dom->loadHTML($html);
+     return element_to_obj($dom->documentElement);
  }
- function ConvertHtmlTagToObject($tag, $content)
+ function element_to_obj($element)
  {
-     $htmlTag=new HtmlTag();
-     $text="";
-     $SpaceCount=0;
-     $proprtyName;
-     for ($i=0; $i <strlen($tag) ; $i++) {
-         $text.=$tag[$i];
-         if ($tag[$i]==' ') {
-             if ($SpaceCount==0) {
-                 $htmlTag->tagName=$text;
-                 $text="";
-             }
-             $SpaceCount++;
-         }
-         if ($tag[$i]=='=') {
-             $proprtyName=$text;
-             $text="";
-             $i++;
-         }
-         if ($tag[$i]=='"') {
-             $htmlTag->proprties[$proprtyName]=$text;
-             $text="";
+     $obj = array( "tag" => $element->tagName );
+     foreach ($element->attributes as $attribute) {
+         $obj[$attribute->name] = $attribute->value;
+     }
+     foreach ($element->childNodes as $subElement) {
+         if ($subElement->nodeType == XML_TEXT_NODE) {
+             $obj["html"] = $subElement->wholeText;
+         } elseif ($subElement->nodeType == XML_CDATA_SECTION_NODE) {
+             $obj["html"] = $subElement->data;
+         } else {
+             $obj["children"][] = element_to_obj($subElement);
          }
      }
-     error_log(json_encode($htmlTag));
- }
- class HtmlTag
- {
-     public $tagName;
-     public $proprties;
-     public $content;
-     public function __construct()
-     {
-         $this->proprties = [];
-         $this->content = [];
-     }
+     return $obj;
  }
