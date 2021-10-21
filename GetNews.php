@@ -44,7 +44,7 @@ function GetImage($li)
     error_log("end position:".strpos($li, ">"));
     $li=substr($li, 0, strpos($li, ">"));
     error_log($li);
-    $li=substr($li, strpos($li, "src=")+4);
+    $li=substr($li, strpos($li, "src=")+5);
     error_log($li);
     $li=substr($li, 0, strpos($li, '"'));
     error_log($li);
