@@ -40,7 +40,7 @@ function SeperateStringToArray($string, $starter, $ender)
 function GetImage($li)
 {
     error_log("image position:".strpos($li, "<img"));
-    error_log("end position:".strpos($li, 0, strpos($li, ">")));
     $li=substr($li, strpos($li, "<img"));
+    error_log("end position:".strpos($li, 0, strpos($li, ">")));
     $li=substr($li, strpos($li, 0, strpos($li, ">")));
 }
