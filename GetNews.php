@@ -12,7 +12,7 @@
  error_log(curl_error($curl));
  curl_close($curl);
  $result=substr($result, strpos($result, '<div id="slingstoneStream-0-Stream"'));
-error_log(json_encode($result));
+error_log(json_encode(html_to_obj($result)));
  function html_to_obj($html)
  {
      $dom = new DOMDocument();
