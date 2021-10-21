@@ -43,7 +43,7 @@
              $text="";
          }
      }
-     error_log(var_dump($htmlTag));
+     error_log(json_encode($htmlTag));
  }
  class HtmlTag
  {
