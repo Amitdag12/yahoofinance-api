@@ -13,7 +13,9 @@
  curl_close($curl);
  $result=substr($result, strpos($result, 'id="slingstoneStream-0-Stream"'));
  $result=substr($result, FindNextCloseTag($result));
- ConvertHtmlTagToObject(substr($result, strpos($result, "<")+1, FindNextCloseTag($result)), "");
+ $result=substr($result, strpos($result, "<")+1);
+ error_log(FindNextCloseTag($result));
+ ConvertHtmlTagToObject(substr($result, 0, FindNextCloseTag($result)), "");
  function FindNextCloseTag($html)
  {
      return strpos($html, ">");
