@@ -11,28 +11,29 @@
  //error_log($result);
  error_log(curl_error($curl));
  curl_close($curl);
- //$result=substr($result, strpos($result, '<div id="slingstoneStream-0-Stream"'));
-error_log(json_encode(html_to_obj($result)));
- function html_to_obj($html)
- {
-     $dom = new DOMDocument();
-     $dom->loadHTML($html);
-     return element_to_obj($dom->documentElement);
- }
- function element_to_obj($element)
- {
-     $obj = array( "tag" => $element->tagName );
-     foreach ($element->attributes as $attribute) {
-         $obj[$attribute->name] = $attribute->value;
-     }
-     foreach ($element->childNodes as $subElement) {
-         if ($subElement->nodeType == XML_TEXT_NODE) {
-             $obj["html"] = $subElement->wholeText;
-         } elseif ($subElement->nodeType == XML_CDATA_SECTION_NODE) {
-             $obj["html"] = $subElement->data;
-         } else {
-             $obj["children"][] = element_to_obj($subElement);
-         }
-     }
-     return $obj;
- }
+ $result=substr($result, strpos($result, '<ul class="My(0) P(0) Wow(bw) Ov(h)" data-reactid="3">'));
+ $result=substr($result, 0, strpos($result, "</ul>"));
+error_log(json_encode(SeperateStringToArray($result, "<li", "</li>")));
+
+function SeperateStringToArray($string, $starter, $ender)
+{
+    $text="";
+    $arr=[];
+    $index=0;
+    $flag=false;
+    for ($i=0; $i < strlen($string); $i++) {
+        $text.=$string[$i];
+        if (strpos($text, $starter) !== false) {
+            $flag=true;
+        }
+        if ($string[$i]=='>'&&$flag) {
+            $text="";
+            $flag=false;
+        }
+        if (strpos($text, $ender) !== false) {
+            $arr[$index]=substr($text, 0, strpos($text, $ender));
+            $index++;
+        }
+    }
+    return $arr;
+}
