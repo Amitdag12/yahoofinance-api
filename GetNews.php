@@ -8,7 +8,7 @@
  curl_setopt($curl, CURLOPT_URL, $url);
  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
  $result = curl_exec($curl);
- error_log($result);
+ //error_log($result);
  error_log(curl_error($curl));
  curl_close($curl);
  $result=substr($result, strpos($result, 'id="slingstoneStream-0-Stream"'));
