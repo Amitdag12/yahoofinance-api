@@ -25,7 +25,7 @@
      $SpaceCount=0;
      $proprtyName;
      for ($i=0; $i <strlen($tag) ; $i++) {
-         $text+=$tag[$i];
+         $text.=$tag[$i];
          if ($tag[$i]==' ') {
              if ($SpaceCount==0) {
                  $htmlTag->tagName=$text;
