@@ -43,7 +43,9 @@ function GetImage($li)
     $li=substr($li, strpos($li, "<img"));
     error_log("end position:".strpos($li, ">"));
     $li=substr($li, 0, strpos($li, ">"));
+    error_log($li);
     $li=substr($li, strpos($li, "src=")+4);
+    error_log($li);
     $li=substr($li, 0, strpos($li, '"'));
     error_log($li);
 }
