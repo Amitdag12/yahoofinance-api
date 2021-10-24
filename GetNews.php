@@ -64,6 +64,6 @@ function GetHeadLine($li){
     error_log($li);
     $li=substr($li, strpos($li, ">")+1);
     error_log($li);
-    $li=substr($li, 0, strpos($li, "<"));
+    $li=substr($li, 0, strpos($li, "</div>"));
     error_log($li);
 }
