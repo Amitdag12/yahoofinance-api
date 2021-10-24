@@ -50,6 +50,7 @@ function GetImage($li)
     error_log($li);
 }
 function GetHeadLine($li){
+    error_log($li);
     error_log("a position:".strpos($li, "<a"));
     $li=substr($li, strpos($li, "<a")+2);
     error_log("end position:".strpos($li, ">"));
