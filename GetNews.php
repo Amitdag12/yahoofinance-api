@@ -59,7 +59,8 @@ function GetHeadLine($li){
     $li=substr($li, strpos($li, "<u")+2);
     error_log("end position:".strpos($li, ">"));
     $li=substr($li, strpos($li, ">")+1);
-    //$li=substr($li, strpos($li, ">")+1);
+    error_log($li);
+    $li=substr($li, strpos($li, ">")+1);
     error_log($li);
     $li=substr($li, 0, strpos($li, '<'));
     error_log($li);
