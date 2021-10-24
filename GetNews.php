@@ -71,6 +71,7 @@ function GetHeadLine($li){
 }
 function GetParagraph($li){
     error_log($li);
+    return 0;
     error_log("end a position:".strpos($li, "</a>"));
     $li=substr($li, strpos($li, "</a>")+2);
     error_log("end position:".strpos($li, "<p"));
