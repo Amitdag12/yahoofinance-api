@@ -14,6 +14,7 @@
  $result=substr($result, strpos($result, '<ul class="My(0) P(0) Wow(bw) Ov(h)" data-reactid="3">'));
  $result=substr($result, 0, strpos($result, "</ul>"));
 $LiArray=SeperateStringToArray($result, "<li", "</li>");
+error_log($LilArray);
 GetParagraph($LiArray[0]);
 function SeperateStringToArray($string, $starter, $ender)
 {
