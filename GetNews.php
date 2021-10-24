@@ -48,7 +48,7 @@ function GetImage($li)
     error_log($li);
     $li=substr($li, 0, strpos($li, '"'));
     error_log($li);
-    return $li
+    return $li;
 }
 function GetHeadLine($li){
     error_log($li);
@@ -67,7 +67,7 @@ function GetHeadLine($li){
     error_log($li);
     $li=substr($li, 0, strpos($li, "</div>"));
     error_log($li);
-    return $li
+    return $li;
 }
 function GetParagraph($li){
     error_log($li);
@@ -86,5 +86,5 @@ function GetParagraph($li){
     error_log($li);
   //  $li=substr($li, 0, strpos($li, "</div>"));
   //  error_log($li);
-    return $li
+    return $li;
 }
