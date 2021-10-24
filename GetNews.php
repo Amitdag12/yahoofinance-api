@@ -14,7 +14,7 @@
  $result=substr($result, strpos($result, '<ul class="My(0) P(0) Wow(bw) Ov(h)" data-reactid="3">'));
  $result=substr($result, 0, strpos($result, "</ul>"));
 $LiArray=SeperateStringToArray($result, "<li", "</li>");
-GetHeadLine($LiArray[0]);
+GetParagraph($LiArray[0]);
 function SeperateStringToArray($string, $starter, $ender)
 {
     $text="";
@@ -48,6 +48,7 @@ function GetImage($li)
     error_log($li);
     $li=substr($li, 0, strpos($li, '"'));
     error_log($li);
+    return $li
 }
 function GetHeadLine($li){
     error_log($li);
@@ -66,4 +67,24 @@ function GetHeadLine($li){
     error_log($li);
     $li=substr($li, 0, strpos($li, "</div>"));
     error_log($li);
+    return $li
+}
+function GetParagraph($li){
+    error_log($li);
+    error_log("end a position:".strpos($li, "</a>"));
+    $li=substr($li, strpos($li, "</a>")+2);
+    error_log("end position:".strpos($li, "<p"));
+    $li=substr($li, strpos($li, "<p")+1);
+    error_log("a position:".strpos($li, ">"));
+    $li=substr($li, strpos($li, ">")+2);
+    error_log("end position:".strpos($li, "</p>"));
+    $li=substr($li,0, strpos($li, "</p>")+4);
+    error_log($li);
+    $li=substr($li, strpos($li, '"')+1);
+    error_log($li);
+    $li=substr($li,0, strpos($li, '"')+1);
+    error_log($li);
+  //  $li=substr($li, 0, strpos($li, "</div>"));
+  //  error_log($li);
+    return $li
 }
