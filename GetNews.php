@@ -24,7 +24,7 @@ for ($i=0; $i <count($LiArray) ; $i++) {
                     'Paragraph'=>GetParagraph($LiArray[$i]),
                     'Link'=>GetLink($LiArray[$i])];
 }
-echo(json_encode($response));
+echo(str_replace("\/","/",json_encode($response)));
 function SeperateStringToArray($string, $starter, $ender)
 {
     $text="";
