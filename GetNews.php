@@ -43,7 +43,7 @@ function SeperateStringToArray($string, $starter, $ender)
         if (strpos($text, $ender) !== false) {
             $arr[$index]=substr($text, 0, strpos($text, $ender));
             $index++;
-            $text=substr($text, strpos($text, $ender));
+            $text=substr($text, strpos($text, $ender)+strlen($ender));
         }
     }
     return $arr;
