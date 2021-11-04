@@ -14,8 +14,16 @@
  $result=substr($result, strpos($result, '<ul class="My(0) P(0) Wow(bw) Ov(h)" data-reactid="3">'));
  $result=substr($result, 0, strpos($result, "</ul>"));
 $LiArray=SeperateStringToArray($result, "<li", "</li>");
-error_log($LilArray);
-GetLink($LiArray[0]);
+//error_log($LiArray);
+//GetLink($LiArray[0]);
+$response= [];
+for ($i=0; $i <count($LiArray) ; $i++) { 
+    $response[$i]=['HeadLine'=>GetHeadLine($LiArray[$i]),
+                    'Image'=>GetImage($LiArray[$i]),
+                    'Paragraph'=>GetParagraph($LiArray[$i]),
+                    'Link'=>GetLink($LiArray[$i])];
+}
+echo(json_encode($response));
 function SeperateStringToArray($string, $starter, $ender)
 {
     $text="";
