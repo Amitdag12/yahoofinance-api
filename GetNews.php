@@ -102,7 +102,7 @@ function GetParagraph($li){
     $li=substr($li, strpos($li, "<p")+1);
     
    // error_log("a position:".strpos($li, ">"));
-    $li=substr($li, strpos($li, ">")+2);
+    $li=substr($li, strpos($li, ">")+1);
     
    // error_log("end position:".strpos($li, "</p>"));
     $li=substr($li,0, strpos($li, "</p>"));
