@@ -65,6 +65,7 @@ function GetImage($li)
 function GetHeadLine($li){
   //  error_log($li);
   //  error_log("a position:".strpos($li, "<a"));
+  $li=str_replace("<!-- /react-text -->","",$li);
     $li=substr($li, strpos($li, "<a")+2);
   //  error_log("end position:".strpos($li, ">"));
     $li=substr($li, strpos($li, ">")+1);
@@ -82,10 +83,10 @@ function GetHeadLine($li){
   //  $li=substr($li,0, strpos($li, ">"));
  $li=str_replace("<!-- /react-text -->","",$li);
   if (strpos($li, ">") !== false) {
-    $li=substr($li, 0, strpos($li, ">"));
+    //$li=substr($li, 0, strpos($li, ">"));
 }
 if (strpos($li, "<") !== false) {
-  $li=substr($li,  strpos($li, "<"));
+  //$li=substr($li,  strpos($li, "<"));
 }
 error_log($li);
     return $li;
