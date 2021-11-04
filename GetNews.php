@@ -84,8 +84,7 @@ function GetParagraph($li){
     
     error_log("end position:".strpos($li, "</p>"));
     $li=substr($li,0, strpos($li, "</p>"));
-    error_log($li);
-    return 0;
+    
     
   //  $li=substr($li, 0, strpos($li, "</div>"));
   //  error_log($li);
@@ -95,6 +94,8 @@ function GetLink($li){
   
   error_log("a position:".strpos($li, "<a"));
   $li=substr($li, strpos($li, "<a")+2);
+  error_log($li);
+    return 0;
   error_log("end position:".strpos($li, "</a>"));
     $li=substr($li, 0,strpos($li, "</a>"));
     error_log("a position:".strpos($li, "<a"));
