@@ -15,7 +15,7 @@
  $result=substr($result, 0, strpos($result, "</ul>"));
 $LiArray=SeperateStringToArray($result, "<li", "</li>");
 error_log($LilArray);
-GetParagraph($LiArray[0]);
+GetLink($LiArray[0]);
 function SeperateStringToArray($string, $starter, $ender)
 {
     $text="";
@@ -52,7 +52,7 @@ function GetImage($li)
     return $li;
 }
 function GetHeadLine($li){
-    error_log($li);
+  //  error_log($li);
     error_log("a position:".strpos($li, "<a"));
     $li=substr($li, strpos($li, "<a")+2);
     error_log("end position:".strpos($li, ">"));
@@ -90,4 +90,16 @@ function GetParagraph($li){
   //  $li=substr($li, 0, strpos($li, "</div>"));
   //  error_log($li);
     return $li;
+}
+function GetLink($li){
+  
+  error_log("a position:".strpos($li, "<a"));
+  $li=substr($li, strpos($li, "<a")+2);
+  error_log("end position:".strpos($li, "</a>"));
+    $li=substr($li, 0,strpos($li, "</a>"));
+    error_log("a position:".strpos($li, "<a"));
+  $li=substr($li, strpos($li, "href")+5);
+  error_log("end position:".strpos($li, '"'));
+    $li=substr($li, 0,strpos($li, '"');
+      error_log($li);
 }
