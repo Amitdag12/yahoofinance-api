@@ -59,7 +59,7 @@ function GetImage($li)
   //  error_log($li);
     $li=substr($li, 0, strpos($li, '"'));
   //  error_log($li);
-    return $li;
+    return str_replace("\/","/",$li);
 }
 function GetHeadLine($li){
   //  error_log($li);
