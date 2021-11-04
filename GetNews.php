@@ -83,13 +83,9 @@ function GetParagraph($li){
     $li=substr($li, strpos($li, ">")+2);
     
     error_log("end position:".strpos($li, "</p>"));
-    $li=substr($li,0, strpos($li, "</p>")+4);
+    $li=substr($li,0, strpos($li, "</p>"));
     error_log($li);
     return 0;
-    
-    $li=substr($li, strpos($li, '"')+1);
-    
-    $li=substr($li,0, strpos($li, '"')+1);
     
   //  $li=substr($li, 0, strpos($li, "</div>"));
   //  error_log($li);
