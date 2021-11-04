@@ -49,32 +49,32 @@ function SeperateStringToArray($string, $starter, $ender)
 }
 function GetImage($li)
 {
-    error_log("image position:".strpos($li, "<img"));
+   // error_log("image position:".strpos($li, "<img"));
     $li=substr($li, strpos($li, "<img"));
-    error_log("end position:".strpos($li, ">"));
+  //  error_log("end position:".strpos($li, ">"));
     $li=substr($li, 0, strpos($li, ">"));
-    error_log($li);
+  //  error_log($li);
     $li=substr($li, strpos($li, "src=")+5);
-    error_log($li);
+  //  error_log($li);
     $li=substr($li, 0, strpos($li, '"'));
-    error_log($li);
+  //  error_log($li);
     return $li;
 }
 function GetHeadLine($li){
   //  error_log($li);
-    error_log("a position:".strpos($li, "<a"));
+  //  error_log("a position:".strpos($li, "<a"));
     $li=substr($li, strpos($li, "<a")+2);
-    error_log("end position:".strpos($li, ">"));
+  //  error_log("end position:".strpos($li, ">"));
     $li=substr($li, strpos($li, ">")+1);
-    error_log("a position:".strpos($li, "<u"));
+  //  error_log("a position:".strpos($li, "<u"));
     $li=substr($li, strpos($li, "<u")+2);
-    error_log("end position:".strpos($li, ">"));
+  //  error_log("end position:".strpos($li, ">"));
     $li=substr($li, strpos($li, ">")+1);
-    error_log($li);
+  //  error_log($li);
     $li=substr($li, strpos($li, ">")+1);
-    error_log($li);
+   // error_log($li);
     $li=substr($li, strpos($li, ">")+1);
-    error_log($li);
+  //  error_log($li);
     $li=substr($li, 0, strpos($li, "</div>"));
   //  error_log($li);
   //  $li=substr($li,0, strpos($li, ">"));
@@ -83,16 +83,16 @@ function GetHeadLine($li){
 function GetParagraph($li){
    
     
-    error_log("end a position:".strpos($li, "</a>"));
+   // error_log("end a position:".strpos($li, "</a>"));
     $li=substr($li, strpos($li, "</a>")+2);
     
-    error_log("end position:".strpos($li, "<p"));
+   // error_log("end position:".strpos($li, "<p"));
     $li=substr($li, strpos($li, "<p")+1);
     
-    error_log("a position:".strpos($li, ">"));
+   // error_log("a position:".strpos($li, ">"));
     $li=substr($li, strpos($li, ">")+2);
     
-    error_log("end position:".strpos($li, "</p>"));
+   // error_log("end position:".strpos($li, "</p>"));
     $li=substr($li,0, strpos($li, "</p>"));
     
     
@@ -102,14 +102,14 @@ function GetParagraph($li){
 }
 function GetLink($li){
   
-  error_log("a position:".strpos($li, "<a"));
+ // error_log("a position:".strpos($li, "<a"));
   $li=substr($li, strpos($li, "<a")+2);
   
-    error_log("a position:".strpos($li, "<a"));
+  //  error_log("a position:".strpos($li, "<a"));
   $li=substr($li, strpos($li, "href")+6);
  
-  error_log("end position:".strpos($li, '"'));
+ // error_log("end position:".strpos($li, '"'));
     $li=substr($li, 0,strpos($li, '"'));
-     error_log('https://finance.yahoo.com'.$li);
+    // error_log('https://finance.yahoo.com'.$li);
     return 'https://finance.yahoo.com'.$li;
 }
