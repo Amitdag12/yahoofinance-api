@@ -25,8 +25,8 @@ for ($i=0; $i <count($LiArray) ; $i++) {
                     'Link'=>GetLink($LiArray[$i])];
 }
 echo(str_replace("\/","/",json_encode($response)));
-var_dump($response);
-echo("                                                                                         ".GetHeadLine($LiArray[0]));
+//var_dump($response);
+//echo("                                                                                         ".GetHeadLine($LiArray[0]));
 function SeperateStringToArray($string, $starter, $ender)
 {
     $text="";
