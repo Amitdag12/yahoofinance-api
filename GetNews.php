@@ -100,6 +100,6 @@ function GetLink($li){
     error_log("a position:".strpos($li, "<a"));
   $li=substr($li, strpos($li, "href")+5);
   error_log("end position:".strpos($li, '"'));
-    $li=substr($li, 0,strpos($li, '"');
+    $li=substr($li, 0,strpos($li, '"'));
       error_log($li);
 }
