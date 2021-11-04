@@ -75,8 +75,8 @@ function GetParagraph($li){
     
     error_log("end a position:".strpos($li, "</a>"));
     $li=substr($li, strpos($li, "</a>")+2);
-    return 0;
     error_log($li);
+    return 0;
     error_log("end position:".strpos($li, "<p"));
     $li=substr($li, strpos($li, "<p")+1);
     error_log("a position:".strpos($li, ">"));
