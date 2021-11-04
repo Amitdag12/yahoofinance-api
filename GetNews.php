@@ -83,7 +83,7 @@ function GetHeadLine($li){
   //  $li=substr($li,0, strpos($li, ">"));
  $li=str_replace("<!-- /react-text -->","",$li);
   if (strpos($li, ">") !== false) {
-    //$li=substr($li, 0, strpos($li, ">"));
+    $li=substr($li, 0, strpos($li, ">"));
 }
 if (strpos($li, "<") !== false) {
   //$li=substr($li,  strpos($li, "<"));
