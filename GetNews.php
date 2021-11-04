@@ -14,7 +14,7 @@
  $result=substr($result, strpos($result, '<ul class="My(0) P(0) Wow(bw) Ov(h)" data-reactid="3">'));
  $result=substr($result, 0, strpos($result, "</ul>"));
 $LiArray=SeperateStringToArray($result, "<li", "</li>");
-//error_log($LiArray);
+error_log($LiArray);
 //GetLink($LiArray[0]);
 $response= [];
 for ($i=0; $i <count($LiArray) ; $i++) { 
@@ -76,6 +76,7 @@ function GetHeadLine($li){
     error_log($li);
     $li=substr($li, 0, strpos($li, "</div>"));
     error_log($li);
+    $li=substr($li,0, strpos($li, ">"));
     return $li;
 }
 function GetParagraph($li){
