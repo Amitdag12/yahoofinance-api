@@ -80,6 +80,12 @@ function GetHeadLine($li){
     $li=substr($li, 0, strpos($li, "</div>"));
     error_log($li);
   //  $li=substr($li,0, strpos($li, ">"));
+  if (strpos($li, ">") !== false) {
+    $li=substr($li, 0, strpos($li, ">"));
+}
+if (strpos($li, "<") !== false) {
+  $li=substr($li,  strpos($li, "<"));
+}
     return $li;
 }
 function GetParagraph($li){
