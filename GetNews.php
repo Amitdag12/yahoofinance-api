@@ -89,7 +89,7 @@ function GetHeadLine($li){
    // $li=substr($li, 0, strpos($li, ">"));
 }
 if (strpos($li, "<") !== false) {
-  //$li=substr($li,  strpos($li, "<"));
+  $li=substr($li,  strpos($li, "<"));
 }
 error_log($li);
     return $li;
