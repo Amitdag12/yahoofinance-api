@@ -69,7 +69,7 @@ function GetHeadLine($li){
   //  error_log($li);
   //  error_log("a position:".strpos($li, "<a"));
   $li=str_replace("<!-- /react-text -->","",$li);
-  $li=str_replace('"',"",$li);$p
+  $li=str_replace('"',"",$li);
     $li=substr($li, strpos($li, "<a")+2);
   //  error_log("end position:".strpos($li, ">"));
     $li=substr($li, strpos($li, ">")+1);
