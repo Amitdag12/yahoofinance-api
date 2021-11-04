@@ -86,6 +86,7 @@ function GetHeadLine($li){
 if (strpos($li, "<") !== false) {
   $li=substr($li,  strpos($li, "<"));
 }
+error_log($li);
     return $li;
 }
 function GetParagraph($li){
