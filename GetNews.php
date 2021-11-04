@@ -101,5 +101,5 @@ function GetLink($li){
   error_log("end position:".strpos($li, '"'));
     $li=substr($li, 0,strpos($li, '"'));
     //  error_log($li);
-    return $url.$li;
+    return 'https://finance.yahoo.com'.$li;
 }
