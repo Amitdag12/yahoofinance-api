@@ -158,14 +158,14 @@ function GetActualPage($url)
     $headLine=substr($headLine, 0, strpos($headLine, "</h1>"));
     $pargraph=substr($result, strpos($result, '<div class="caas-body">'));
     $image=substr($pargraph, strpos($pargraph, 'src=')+5);
-    $image=substr($image,0, strpos($image, '"'));
+    $image=substr($image, 0, strpos($image, '"'));
     $pargraph=substr($pargraph, strpos($pargraph, '<p>')+3);
     $pargraph=substr($pargraph, 0, strpos($pargraph, "</p>"));
     
     error_log("paragraph:".$pargraph);
     error_log("headline:".$headLine);
     error_log("image:".$image);
-    return ["paragraph:"=>$pargraph,
-    
-    ]
+    return ['paragraph'=>$pargraph,
+    'headline'=>$headLine,
+    'image'=>$image];
 }
