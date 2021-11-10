@@ -16,7 +16,7 @@
 $LiArray=SeperateStringToArray($result, "<li", "</li>");
 
 //error_log($result);
-//error_log(json_encode($LiArray[1]));
+error_log(count($LiArray));
 //GetLink($LiArray[0]);
 $response= [];
 for ($i=0; $i <count($LiArray) ; $i++) {
