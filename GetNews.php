@@ -54,7 +54,7 @@ function SeperateStringToArray($string, $starter, $ender)
     while (strpos($string, $starter)!==false) {
         $text=substr($string, strpos($string, $starter)+strlen($starter));
         $text=substr($text, 0, strpos($text, $ender));
-        
+
         $string=substr($string, strpos($string, $ender)+strlen($ender));
         $arr[$index]=$text;
         $index++;
@@ -157,8 +157,15 @@ function GetActualPage($url)
     $headLine=substr($result, strpos($result, '<h1 data-test-locator="headline">'));
     $headLine=substr($headLine, 0, strpos($headLine, "</h1>"));
     $pargraph=substr($result, strpos($result, '<div class="caas-body">'));
+    $image=substr($pargraph, strpos($pargraph, 'src=')+5);
+    $image=substr($image,0, strpos($image, '"'));
     $pargraph=substr($pargraph, strpos($pargraph, '<p>')+3);
     $pargraph=substr($pargraph, 0, strpos($pargraph, "</p>"));
+    
     error_log("paragraph:".$pargraph);
     error_log("headline:".$headLine);
+    error_log("image:".$image);
+    return ["paragraph:"=>$pargraph,
+    
+    ]
 }
