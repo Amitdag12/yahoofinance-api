@@ -148,6 +148,7 @@ function GetActualPage($url)
     $pargraph=substr($pargraph, strpos($pargraph, '<p>')+3);
     $pargraph=substr($pargraph, 0, strpos($pargraph, "</p>"));
     if (strlen($pargraph)<50) {
+        $pargraph=substr($result, strpos($result, '<div class="caas-body">'));
         $pargraph=substr($pargraph, strpos($pargraph, '</p>')+4);
         $pargraph=substr($pargraph, strpos($pargraph, '<p>')+3);
         $pargraph=substr($pargraph, 0, strpos($pargraph, "</p>"));
