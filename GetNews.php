@@ -157,7 +157,7 @@ function GetActualPage($url)
     $headLine=substr($result, strpos($result, '<h1 data-test-locator="headline">'));
     $headLine=substr($headLine, 0, strpos($headLine, "</h1>"));
     $pargraph=substr($result, strpos($result, '<div class="caas-body">'));
-    $image=substr($pargraph, strpos($pargraph, 'data-src=')+10);
+    $image=substr($pargraph, strpos($pargraph, 'src=')+5);
     $image=substr($image, 0, strpos($image, '"'));
     $pargraph=substr($pargraph, strpos($pargraph, '<p>')+3);
     $pargraph=substr($pargraph, 0, strpos($pargraph, "</p>"));
