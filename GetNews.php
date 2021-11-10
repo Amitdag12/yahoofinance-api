@@ -20,11 +20,12 @@ $LiArray=SeperateStringToArray($result, "<li", "</li>");
 error_log(count($LiArray));
 //GetLink($LiArray[0]);
 $response= [];
+
 for ($i=0; $i <count($LiArray) ; $i++) {
-    GetActualPage(GetLink($LiArray[$i]));
-    $response[$i]=['HeadLine'=>GetHeadLine($LiArray[$i]),
-                    'Image'=>GetImage($LiArray[$i]),
-                    'Paragraph'=>GetParagraph($LiArray[$i]),
+    $pageData=GetActualPage(GetLink($LiArray[$i]));
+    $response[$i]=['HeadLine'=>$pageData['HeadLine'],
+                    'Image'=>$pageData['Image'],
+                    'Paragraph'=>$pageData['Paragraph'],
                     'Link'=>GetLink($LiArray[$i])];
 }
 echo(str_replace("\/", "/", json_encode($response)));
@@ -165,7 +166,7 @@ function GetActualPage($url)
     error_log("paragraph:".$pargraph);
     error_log("headline:".$headLine);
     error_log("image:".$image);
-    return ['paragraph'=>$pargraph,
-    'headline'=>$headLine,
-    'image'=>$image];
+    return ['Paragraph'=>$pargraph,
+    'HeadLine'=>$headLine,
+    'Image'=>$image];
 }
