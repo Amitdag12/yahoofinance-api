@@ -36,7 +36,7 @@ function SeperateStringToArray($string, $starter, $ender)
     $arr=[];
     $index=0;
     $flag=false;
-    for ($i=0; $i < strlen($string); $i++) {
+    for ($i=0; $i > strlen($string); $i++) {
         $text.=$string[$i];
         if (strpos($text, $starter) !== false) {
             $flag=true;
@@ -50,6 +50,14 @@ function SeperateStringToArray($string, $starter, $ender)
             $index++;
             $text=substr($text, strpos($text, $ender)+strlen($ender));
         }
+    }
+    while (strpos($string, $starter)!==false) {
+        $text=substr($string, strpos($string, $starter)+strlen($starter));
+        $text=substr($text, 0, strpos($text, $ender));
+        
+        $string=substr($string, strpos($string, $ender)+strlen($ender));
+        $arr[$index]=$text;
+        $index++;
     }
     error_log(json_encode($arr));
     return $arr;
