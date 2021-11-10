@@ -155,7 +155,7 @@ function GetActualPage($url)
     //error_log($result);
     error_log(curl_error($curl));
     curl_close($curl);
-    $headLine=substr($result, strpos($result, '<h1 data-test-locator="headline">'));
+    $headLine=substr($result, strpos($result, '<h1 data-test-locator="headline">')+strlen('<h1 data-test-locator="headline">'));
     $headLine=substr($headLine, 0, strpos($headLine, "</h1>"));
     $pargraph=substr($result, strpos($result, '<div class="caas-body">'));
     $image=substr($pargraph, strpos($pargraph, 'src=')+5);
