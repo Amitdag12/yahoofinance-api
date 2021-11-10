@@ -162,6 +162,11 @@ function GetActualPage($url)
     $image=substr($image, 0, strpos($image, '"'));
     $pargraph=substr($pargraph, strpos($pargraph, '<p>')+3);
     $pargraph=substr($pargraph, 0, strpos($pargraph, "</p>"));
+    if (strlen($pargraph)<50) {
+        $pargraph=substr($pargraph, strpos($pargraph, '</p>')+4);
+        $pargraph=substr($pargraph, strpos($pargraph, '<p>')+3);
+        $pargraph=substr($pargraph, 0, strpos($pargraph, "</p>"));
+    }
     
     error_log("paragraph:".$pargraph);
     error_log("headline:".$headLine);
