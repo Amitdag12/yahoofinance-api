@@ -28,6 +28,7 @@ for ($i=0; $i <count($LiArray) ; $i++) {
                     'Paragraph'=>$pageData['Paragraph'],
                     'Link'=>GetLink($LiArray[$i])];
 }
+error_log(json_encode($response));
 echo(str_replace("\/", "/", json_encode($response)));
 //var_dump($response);
 //echo("                                                                                         ".GetHeadLine($LiArray[0]));
@@ -36,22 +37,6 @@ function SeperateStringToArray($string, $starter, $ender)
     $text="";
     $arr=[];
     $index=0;
-    $flag=false;
-    for ($i=0; $i > strlen($string); $i++) {
-        $text.=$string[$i];
-        if (strpos($text, $starter) !== false) {
-            $flag=true;
-        }
-        if ($string[$i]=='>'&&$flag) {
-            $text="";
-            $flag=false;
-        }
-        if (strpos($text, $ender) !== false) {
-            $arr[$index]=substr($text, 0, strpos($text, $ender));
-            $index++;
-            $text=substr($text, strpos($text, $ender)+strlen($ender));
-        }
-    }
     while (strpos($string, $starter)!==false) {
         $text=substr($string, strpos($string, $starter)+strlen($starter));
         $text=substr($text, 0, strpos($text, $ender));
@@ -60,7 +45,7 @@ function SeperateStringToArray($string, $starter, $ender)
         $arr[$index]=$text;
         $index++;
     }
-    error_log(json_encode($arr));
+    // error_log(json_encode($arr));
     return $arr;
 }
 function GetImage($li)
