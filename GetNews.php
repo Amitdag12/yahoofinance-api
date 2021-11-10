@@ -50,6 +50,7 @@ function SeperateStringToArray($string, $starter, $ender)
             $text=substr($text, strpos($text, $ender)+strlen($ender));
         }
     }
+    error_log(json_encode($arr));
     return $arr;
 }
 function GetImage($li)
