@@ -33,7 +33,7 @@ function GetStockQuote($stockSymbol)
     
       //Possible inputs for &interval=: 1m, 5m, 15m, 30m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo
       $url='https://query1.finance.yahoo.com/v8/finance/chart/'.$stockSymbol.'?symbol='.$stockSymbol.'&period1='.(time()-($dayAmount*24*60*60)).'&period2=9999999999&interval='.$interval;
-      $url='https://query1.finance.yahoo.com/v8/finance/chart/'.$stockSymbol.'?symbol='.$stockSymbol.'&range='.$timePeriod.'&interval='.$interval;
+    //  $url='https://query1.finance.yahoo.com/v8/finance/chart/'.$stockSymbol.'?symbol='.$stockSymbol.'&range='.$timePeriod.'&interval='.$interval;
       error_log($url);
     //  $url="https://query1.finance.yahoo.com/v8/finance/chart/AAPL?symbol=AAPL&period1=1600362461&period2=9999999999&interval=1d";
       $curl = curl_init();
