@@ -11,7 +11,7 @@
  //error_log($result);
  error_log(curl_error($curl));
  curl_close($curl);
- $result=substr($result, strpos($result, '<ul class="My(0) P(0) Wow(bw) Ov(h)" data-reactid="3">'));
+ $result=substr($result, strpos($result, '<ul class="My(0) P(0) Wow(bw) Ov(h)">'));
  $result=substr($result, 0, strpos($result, "</ul>"));
  error_log(substr_count($result, '<li'));
 $LiArray=SeperateStringToArray($result, "<li", "</li>");
